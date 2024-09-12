@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Zodiak-Thin';
+    src: url('../src/assets/fonts/Zodiak-Thin.otf') format('otf');
+    font-weight: 100;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Zodiak-Light';
+    src: url('../src/assets/fonts/Zodiak-Light.otf') format('opentype');
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Zodiak-Regular';
+    src: url('../src/assets/fonts/Zodiak-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Zodiak-Bold';
+    src: url('../src/assets/fonts/Zodiak-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Zodiak-Extrabold';
+    src: url('../src/assets/fonts/Zodiak-Extrabold.otf') format('opentype');
+    font-weight: 800;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Zodiak-Black';
+    src: url('../src/assets/fonts/Zodiak-Black.otf') format('opentype');
+    font-weight: 900;
+    font-display: swap;
+    font-style: normal;
+  }
+
+
+  @layer utilities {
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      @apply appearance-none;
+    }
+
+    input[type="number"] {
+      @apply appearance-none;
+      -moz-appearance: textfield;
+    }
+  }
+
+
+  
