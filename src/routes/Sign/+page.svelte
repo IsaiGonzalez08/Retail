@@ -65,7 +65,7 @@
 
 <div class="flex flex-col w-full h-screen">
 	<Header />
-	<div class="flex flex-col px-6 w-full h-full">
+	<div class="flex flex-col galaxy-z:px-1 custom:px-5 custom2:px-6 w-full h-full">
 		<div class="flex items-center h-[36px] w-full mb-[24px] mt-8 justify-center">
 			<div class="flex flex-col">
 				<div class="flex items-center">
@@ -75,7 +75,7 @@
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#D46353] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start text-[8px] text-[#D46353] mt-[3px]">
+				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D46353] mt-[3px]">
 					Order
 				</h4>
 			</div>
@@ -88,7 +88,7 @@
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#FFF] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start text-[8px] text-[#D9D9D9] mt-[3px]">
+				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]">
 					Select items
 				</h4>
 			</div>
@@ -101,7 +101,7 @@
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#FFF] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start text-[8px] text-[#D9D9D9] mt-[3px]">
+				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]">
 					Return Reason
 				</h4>
 			</div>
@@ -114,7 +114,7 @@
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#FFF] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start text-[8px] text-[#D9D9D9] mt-[3px]">
+				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]">
 					Refund
 				</h4>
 			</div>
@@ -127,12 +127,12 @@
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#FFF] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start text-[8px] text-[#D9D9D9] mt-[3px]">
+				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]">
 					Review
 				</h4>
 			</div>
 		</div>
-		<div class="flex flex-col justify-between w-full h-full">
+		<div class="flex flex-col justify-between w-full h-full galaxy-z:px-2 custom:px-0">
 			<div>
 				<h2 class="font-zodiak text-[#000101] text-[32px] font-zodiakBold">Look up order</h2>
 				<h4 class="font-manrope text-[16px] font-normal leading-[21.86px]">

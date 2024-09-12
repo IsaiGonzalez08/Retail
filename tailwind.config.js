@@ -12,6 +12,11 @@ export default {
         zodiakExtrabold: ['Zodiak-Extrabold', 'sans-serif'],
         zodiakBlack: ['Zodiak-Black', 'sans-serif'],
       },
+      screens: {
+        'galaxy-z': '340px', 
+        'custom': '350px', 
+        'custom2': '390px',
+      },
     }
   },
   plugins: []

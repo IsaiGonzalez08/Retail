@@ -131,7 +131,7 @@
 					<h2 class="text-[#000101] text-[24px] font-zodiakBold leading-[30px]">
 						Total<br />Balance:
 					</h2>
-					<h2 class="text-[#000101] font-manrope text-[24px] font-medium leading-[30px]">-${localBalance}</h2>
+					<h2 class="text-[#000101] font-manrope text-[24px] font-medium leading-[30px]">${localBalance}</h2>
 				</div>
 			</div>
 			<div class="flex flex-col items-center">
