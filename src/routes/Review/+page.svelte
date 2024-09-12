@@ -149,7 +149,7 @@
 				{/each}
 				<div class="flex justify-between mt-[18px]">
 					<h2 class="text-[22px] text-[#000101] font-zodiakBold">Total</h2>
-					<h3 class="text-[22px] font-medium text-[#000101] font-manrope">-${totalBalance}</h3>
+					<h3 class="text-[22px] font-medium text-[#000101] font-manrope">${totalBalance}</h3>
 				</div>
 				<span class="flex justify-end mr-[11px] text-[14px] font-light gap-2 mt-[23px] mb-[13px]">
 					<span class="text-[#D9D9D9]">Refund preference:</span>
