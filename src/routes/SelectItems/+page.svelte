@@ -3,7 +3,6 @@
 	import CardItem from './components/CardItem.svelte';
 	import { goto } from '$app/navigation';
 	import { selectedProducts } from '../../stores/selectedProducts';
-	import { balance as balanceStore } from '../../stores/balance';
 	import Modal from '../components/modal.svelte';
 
 	let showModal = false;
@@ -26,30 +25,31 @@
 		goto('../ReturnReason');
 	}	
 
-
 	function togglePrice(price, isAdding, product) {
+		const numericPrice = Number(price);
 		if (isAdding) {
-			localBalance += Number(price);
-			balanceStore.update(b => b + Number(price));
+			localBalance += numericPrice;
 			selectedProducts.update(products => {
 				const existingProduct = products.find(p => p.name === product.name);
 				if (existingProduct) {
-					return products.map(p => p.name === product.name ? { ...p, price: Number(price), reason: existingProduct.reason } : p);
+					return products.map(p => p.name === product.name ? { ...p, price: numericPrice, reason: existingProduct.reason } : p);
 				} else {
-					return [...products, { ...product, price: Number(price), reason: null }];
+					return [...products, { ...product, price: numericPrice, reason: null }];
 				}
 			});
 			selectedItems++;
+			console.log('items seleccionados', selectedItems);
 		} else {
-			localBalance -= Number(price);
-			balanceStore.update(b => b - Number(price));
+			localBalance -= numericPrice;
 			selectedProducts.update(products => {
-				return products.filter(p => p.name !== product.name);
+				const filteredProducts = products.filter(p => p.name !== product.name);
+				if (filteredProducts.length < products.length) {
+					selectedItems--;
+				}
+				return filteredProducts;
 			});
-			selectedItems--;
 		}
 	}
-
 </script>
 
 <div class="flex flex-col w-full h-full">
@@ -146,9 +146,10 @@
 					Continue
 				</button>
 				<button
-				on:click={openModal}
+					on:click={openModal}
 					class="mb-[22px] mt-[20px] w-[54px] h-[20px] font-manrope font-bold text-[#000101] border-b-[1px] border-[#000101]"
-					>Cancel
+				>
+					Cancel
 				</button>
 			</div>
 		</div>

@@ -2,24 +2,23 @@
 	import { onDestroy } from 'svelte';
 	import Header from '../components/Header.svelte';
 	import CardSuccess from './components/CardSuccess.svelte';
-	import { selectedProducts } from '../../stores/selectedProducts';
-	import { balance } from '../../stores/balance';
-	import { refundMethod } from '../../stores/refundMethod'; // Importa el store
+	import { selectedProducts, totalBalance } from '../../stores/selectedProducts';
+	import { refundMethod } from '../../stores/refundMethod';
 
 	let products = [];
-	let totalBalance = 0;
-	let refundPreference = 'Original Payment'; // Valor predeterminado
+	let balance = 0;
+	let refundPreference = 'Original Payment';
 
-	const unsubscribeProducts = selectedProducts.subscribe((value) => {
+	const unsubscribeProducts = selectedProducts.subscribe(value => {
 		products = value;
 	});
 
-	const unsubscribeBalance = balance.subscribe((value) => {
-		totalBalance = value;
+	const unsubscribeBalance = totalBalance.subscribe(value => {
+		balance = value;
 	});
 
-	const unsubscribeRefundMethod = refundMethod.subscribe((value) => {
-		refundPreference = value === 'online' ? 'Online Credit' : 'Original Payment'; // Actualiza el valor basado en el store
+	const unsubscribeRefundMethod = refundMethod.subscribe(value => {
+		refundPreference = value === 'online' ? 'Online Credit' : 'Original Payment';
 	});
 
 	onDestroy(() => {
@@ -48,7 +47,7 @@
 		</div>
 		<div class="flex justify-between mt-[18px]">
 			<h2 class="text-[22px] text-[#000101] font-zodiakBold">Total</h2>
-			<h3 class="text-[22px] font-medium text-[#000101] font-manrope">${totalBalance}</h3>
+			<h3 class="text-[22px] font-medium text-[#000101] font-manrope">${balance.toFixed(2)}</h3>
 		</div>
 		<span class="flex justify-end mr-[11px] text-[14px] font-light gap-2 mt-[23px] mb-[13px]">
 			<span class="text-[#D9D9D9]">Refund preference:</span>
@@ -57,17 +56,11 @@
 
 		{#if refundPreference === 'Original Payment'}
 			<div class="flex justify-end mr-[5px]">
-				<h2 class="border-b-[1px] border-[#000101] h-[18px] font-manrope text-[14px] font-medium">
-					Edit
-				</h2>
 				<img src="/card-orange.svg" alt="icon-card" class="mr-3 ml-[17px]" />
 				<h2 class="font-manrope font-semibold text-[12px]">AMEX -1001</h2>
 			</div>
 		{:else if refundPreference === 'Online Credit'}
 			<div class="flex justify-end mr-[5px] gap-3">
-				<h2 class="border-b-[1px] border-[#000101] h-[18px] font-manrope text-[14px] font-medium">
-					Edit
-				</h2>
 				<h2 class="flex flex-col items-end font-manrope font-light text-[12px] mt-[2px]">
 					Online Credit
 				</h2>
