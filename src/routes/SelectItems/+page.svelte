@@ -1,9 +1,9 @@
 <script>
-	import Header from '../components/Header.svelte';
-	import CardItem from './components/CardItem.svelte';
+	import Header from '../../lib/components/Header.svelte';
+	import CardItem from '../../lib/components/CardItem.svelte';
 	import { goto } from '$app/navigation';
 	import { selectedProducts } from '../../stores/selectedProducts';
-	import Modal from '../components/modal.svelte';
+	import Modal from '../../lib/components/Modal.svelte';
 
 	let showModal = false;
 	let localBalance = 0;
@@ -52,10 +52,8 @@
 	}
 </script>
 
-<div class="flex flex-col w-full h-full">
-	<Header />
 	<div class="flex flex-col galaxy-z:px-1 custom:px-5 custom2:px-6 w-full h-full">
-		<div class="flex items-center h-[36px] w-full mb-[24px] mt-8 justify-center">
+		<div class="flex justify-center items-center h-[36px] w-full gap-[6px] mt-8 mb-6">
 			<div class="flex flex-col">
 				<div class="flex items-center">
 					<div
@@ -64,59 +62,69 @@
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#D46353] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D46353] mt-[3px]">
+				<h4
+					class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D46353] mt-[3px]"
+				>
 					Order
 				</h4>
 			</div>
-			<div class="w-[42px] h-[1.5px] bg-[#D46353] mx-[6px] mb-3" />
-			<div class="flex flex-col ml-[-14px]">
-				<div class="flex items-center justify-center">
+			<div class="w-11 h-[1.5px] bg-[#D46353] mt-[-14px] mr-[-10px]"/>
+			<div class="flex flex-col">
+				<div class="flex justify-center items-center">
 					<div
 						class="flex justify-center items-center bg-[#FFF] border-[#D46353] border-[2px] w-[22px] h-[22px] rounded-full"
 					>
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#D46353] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D46353] mt-[3px]">
-					Selected items
+				<h4
+					class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D46353] mt-[3px]"
+				>
+					Select items
 				</h4>
 			</div>
-			<div class="w-[42px] h-[1.5px] bg-[#D9D9D9] mb-3 ml-[-10px]"></div>
-			<div class="flex flex-col ml-[-10px]">
-				<div class="flex items-center justify-center">
+			<div class="w-11 h-[1.5px] bg-[#D9D9D9] mt-[-14px] ml-[-10px] mr-[-12px]"/>
+			<div class="flex flex-col">
+				<div class="flex justify-center items-center">
 					<div
 						class="flex justify-center items-center bg-[#FFF] border-[#D9D9D9] border-[2px] w-[22px] h-[22px] rounded-full"
 					>
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#FFF] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]">
+				<h4
+					class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]"
+				>
 					Return Reason
 				</h4>
 			</div>
-			<div class="w-[42px] h-[1.5px] bg-[#D9D9D9] mb-3 ml-[-10px]"></div>
-			<div class="flex flex-col ml-1">
-				<div class="flex items-center justify-center">
+			<div class="w-11 h-[1.5px] bg-[#D9D9D9] mt-[-14px] ml-[-12px]"/>
+			<div class="flex flex-col">
+				<div class="flex justify-center items-center">
 					<div
 						class="flex justify-center items-center bg-[#FFF] border-[#D9D9D9] border-[2px] w-[22px] h-[22px] rounded-full"
 					>
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#FFF] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]">
+				<h4
+					class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]"
+				>
 					Refund
 				</h4>
 			</div>
-			<div class="w-[42px] h-[1.5px] bg-[#D9D9D9] mb-3 ml-1"></div>
-			<div class="flex flex-col ml-1">
-				<div class="flex items-center justify-center">
+			<div class="w-11 h-[1.5px] bg-[#D9D9D9] mt-[-14px]"/>
+			<div class="flex flex-col">
+				<div class="flex justify-center items-center">
 					<div
 						class="flex justify-center items-center bg-[#FFF] border-[#D9D9D9] border-[2px] w-[22px] h-[22px] rounded-full"
 					>
 						<div class="flex justify-center w-[7px] h-[7px] bg-[#FFF] rounded-full" />
 					</div>
 				</div>
-				<h4 class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]">
+				<h4
+					class="font-manrope font-medium text-start galaxy-z:text-[6.8px] custom:text-[7px] custom2:text-[8px] text-[#D9D9D9] mt-[3px]"
+				>
 					Review
 				</h4>
 			</div>
@@ -125,10 +133,10 @@
 			<div>
 				<h2 class="text-[#000101] text-[32px] font-zodiakBold">Select your items</h2>
 				<h4>You may select the items from this order that you’d like to return.</h4>
-				<CardItem name="Crochet Cardigan" price="148" image="/image1.png" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Crochet Cardigan", image: "/image1.png" })} />
-				<CardItem name="Blue Cardigan" price="198" image="/image2.png" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Blue Cardigan", image: "/image2.png" })} />
-				<CardItem name="Mohair Cardigan" price="148" image="/image3.png" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Mohair Cardigan", image: "/image3.png" })} />
-				<CardItem name="Pleated shorts" price="148" image="/image4.png" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Pleated shorts", image: "/image4.png" })} />
+				<CardItem name="Crochet Cardigan" price="148" image="/cloth1.jpg" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Crochet Cardigan", image: "/cloth1.jpg" })} />
+				<CardItem name="Blue Cardigan" price="198" image="/cloth2.webp" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Blue Cardigan", image: "/cloth2.webp" })} />
+				<CardItem name="Mohair Cardigan" price="148" image="/cloth3.webp" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Mohair Cardigan", image: "/cloth3.webp" })} />
+				<CardItem name="Pleated shorts" price="148" image="/cloth4.webp" togglePrice={(price, isAdding) => togglePrice(price, isAdding, { name: "Pleated shorts", image: "/cloth4.webp" })} />
 				<div class="flex items-center justify-between mt-6">
 					<h2 class="text-[#000101] text-[24px] font-zodiakBold leading-[30px]">
 						Total<br />Balance:
@@ -154,7 +162,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 {#if showModal}
 	<Modal closeModal={closeModal} navigateToWelcome={navigateToWelcome} />

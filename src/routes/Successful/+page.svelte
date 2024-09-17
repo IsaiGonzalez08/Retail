@@ -1,7 +1,7 @@
 <script>
 	import { onDestroy } from 'svelte';
 	import Header from '../components/Header.svelte';
-	import CardSuccess from './components/CardSuccess.svelte';
+	import CardSuccess from '../components/CardSuccess.svelte';
 	import { selectedProducts, totalBalance } from '../../stores/selectedProducts';
 	import { refundMethod } from '../../stores/refundMethod';
 
@@ -29,7 +29,6 @@
 </script>
 
 <div class="flex flex-col w-full min-h-screen">
-	<Header />
 	<div class="flex flex-col w-full h-full px-6">
 		<img src="/success.svg" alt="success-icon" class="w-20 h-16 my-5" />
 		<h2 class="font-zodiakBold text-[#000101] text-[32px] leading-10">

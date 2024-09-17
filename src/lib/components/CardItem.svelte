@@ -23,8 +23,8 @@
 			/>
 		</div>
 	</div>
-	<div class="flex items-center min-w-[48px] min-h-[64px] mx-[20px]">
-		<img src={image} alt="img-item" />
+	<div class="flex items-center mx-[20px] w-[47px] h-[63px]">
+		<img src={image} alt="img-item"/>
 	</div>
 	<div class="flex flex-col w-full">
 		<div class="flex items-center w-full justify-between">
