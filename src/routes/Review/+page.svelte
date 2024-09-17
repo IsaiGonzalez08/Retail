@@ -5,7 +5,7 @@
     import { orderNumberStore } from '../../stores/orderStore';
     import { refundMethod } from '../../stores/refundMethod';
 	  import OrderCard from '../../lib/components/OrderCard.svelte';
-	import Modal from '../../lib/components/Modal.svelte';
+	  import Modal from '../../lib/components/Modal.svelte';
   
     let orderNumber = '';
     let refundPreference = 'Original Payment';
@@ -208,7 +208,7 @@
                     </div>
                 {/if}
             </div>
-            <div class="flex flex-col items-center mt-10">
+            <div class="flex flex-col items-center mt-3">
                 <button
                     on:click={navigateToUpdating}
                     class="w-full h-[49px] text-[#FFFEFC] rounded-[5px] font-manrope font-semibold text-lg bg-[#000101] disabled:bg-[#6B7280] mt-6"

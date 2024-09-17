@@ -13,7 +13,7 @@
       </button>
     </div>
     <div class="flex items-center min-w-[48px] min-h-[64px] mx-[20px]">
-      <img src={image} alt="img-item">
+      <img src={image} alt="img-item" class="w-[73px] h-[75px]">
     </div>
     <div class="flex flex-col w-full">
       <div class="flex items-center w-full justify-between">

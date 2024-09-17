@@ -6,7 +6,7 @@
 
 	onMount(() => {
 		setTimeout(() => {
-			goto('/Succesfull');
+			goto('/Successful');
 		}, loadingTime);
 	});
 </script>
