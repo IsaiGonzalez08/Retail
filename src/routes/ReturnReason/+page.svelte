@@ -1,7 +1,6 @@
 <script>
-	import Header from '../../lib/components/Header.svelte';
 	import { goto } from '$app/navigation';
-	import { selectedProducts } from '../../stores/selectedProducts';
+	import { productSelections ,selectedProducts } from '../../stores/selectedProducts';
 	import { onMount } from 'svelte';
 	import Modal from '../../lib/components/Modal.svelte';
 
@@ -58,6 +57,7 @@
 	}
 
 	function navigateToWelcome() {
+		productSelections.set({});
 		goto('/');
 	}
 
@@ -68,6 +68,7 @@
 
 	function handleButtonClick(buttonId) {
 		selections[currentIndex] = buttonId;
+		productSelections.set(selections);
 		updateProductReason();
 	}
 

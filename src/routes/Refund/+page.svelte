@@ -2,9 +2,18 @@
 	import { goto } from '$app/navigation';
 	import Modal from '../../lib/components/Modal.svelte';
 	import { refundMethod } from '../../stores/refundMethod';
+	import { onDestroy } from 'svelte';
 
 	let showModal = false;
 	let selectedCard = null;
+
+	const unsubscribe = refundMethod.subscribe(value => {
+		selectedCard = value;
+	});
+
+	onDestroy(() => {
+		unsubscribe();
+	});
 
 	function openModal() {
 		showModal = true;
@@ -27,6 +36,7 @@
 		refundMethod.set(cardId);
 	}
 </script>
+
 
 <div class="flex flex-col galaxy-z:px-1 custom:px-5 custom2:px-6 w-full h-[90vh] justify-between">
 	<div class="flex flex-col w-full galaxy-z:px-2 custom:px-0">

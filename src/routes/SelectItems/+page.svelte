@@ -1,11 +1,12 @@
 <script>
-	import Header from '../../lib/components/Header.svelte';
+	import { onDestroy } from 'svelte';
 	import CardItem from '../../lib/components/CardItem.svelte';
 	import { goto } from '$app/navigation';
 	import { selectedProducts } from '../../stores/selectedProducts';
 	import Modal from '../../lib/components/Modal.svelte';
 
 	let showModal = false;
+	let products = [];
 	let localBalance = 0;
 	let selectedItems = 0;
 
@@ -25,6 +26,16 @@
 		goto('../ReturnReason');
 	}
 
+	const unsubscribe = selectedProducts.subscribe((value) => {
+        products = value;
+        selectedItems = products.length;
+        localBalance = products.reduce((sum, p) => sum + p.price, 0);
+    });
+
+    onDestroy(() => {
+        unsubscribe();
+    });
+
 	function togglePrice(price, isAdding, product) {
 		const numericPrice = Number(price);
 		if (isAdding) {
@@ -42,7 +53,6 @@
 				}
 			});
 			selectedItems++;
-			console.log('items seleccionados', selectedItems);
 		} else {
 			localBalance -= numericPrice;
 			selectedProducts.update((products) => {
@@ -53,6 +63,10 @@
 				return filteredProducts;
 			});
 		}
+	}
+
+	function isSelected(productName) {
+		return products.some((p) => p.name === productName);
 	}
 </script>
 
@@ -144,6 +158,7 @@
 					name="Crochet Cardigan"
 					price="148"
 					image="/cloth1.jpg"
+					isSelected={isSelected('Crochet Cardigan')}
 					togglePrice={(price, isAdding) =>
 						togglePrice(price, isAdding, { name: 'Crochet Cardigan', image: '/cloth1.jpg' })}
 				/>
@@ -151,6 +166,7 @@
 					name="Blue Cardigan"
 					price="198"
 					image="/cloth2.webp"
+					isSelected={isSelected('Blue Cardigan')}
 					togglePrice={(price, isAdding) =>
 						togglePrice(price, isAdding, { name: 'Blue Cardigan', image: '/cloth2.webp' })}
 				/>
@@ -158,6 +174,7 @@
 					name="Mohair Cardigan"
 					price="148"
 					image="/cloth3.webp"
+					isSelected={isSelected('Mohair Cardigan')}
 					togglePrice={(price, isAdding) =>
 						togglePrice(price, isAdding, { name: 'Mohair Cardigan', image: '/cloth3.webp' })}
 				/>
@@ -165,6 +182,7 @@
 					name="Pleated shorts"
 					price="148"
 					image="/cloth4.webp"
+					isSelected={isSelected('Pleated shorts')}
 					togglePrice={(price, isAdding) =>
 						togglePrice(price, isAdding, { name: 'Pleated shorts', image: '/cloth4.webp' })}
 				/>
