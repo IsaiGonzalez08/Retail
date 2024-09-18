@@ -8,6 +8,8 @@ export default {
         zodiakThin: ['Zodiak-Thin', 'sans-serif'],
         zodiakLight: ['Zodiak-Light', 'sans-serif'],
         zodiakRegular: ['Zodiak-Regular', 'sans-serif'],
+        zodiakMedium: ['Zodiak-Medium', 'sans-serif'],
+        zodiakSemibold: ['Zodiak-Semibold', 'sans-serif'],
         zodiakBold: ['Zodiak-Bold', 'sans-serif'],
         zodiakExtrabold: ['Zodiak-Extrabold', 'sans-serif'],
         zodiakBlack: ['Zodiak-Black', 'sans-serif'],

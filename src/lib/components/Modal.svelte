@@ -8,7 +8,7 @@
 		<div class="flex flex-col justify-between h-full">
 			<div class="flex flex-col">
 				<button on:click={closeModal} class="flex flex-col items-end">
-					<img src="/close.svg" alt="close" />
+					<img src="/icons/close.svg" alt="close" />
 				</button>
 				<h2 class="text-[#FFFEFC] font-zodiakBold text-[24px]">
 					Are you sure you<br />want to cancel?

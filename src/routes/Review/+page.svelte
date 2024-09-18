@@ -1,11 +1,9 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { selectedProducts, totalBalance } from '../../stores/selectedProducts';
-	import { orderNumberStore } from '../../stores/orderStore';
-	import { refundMethod } from '../../stores/refundMethod';
-	import OrderCard from '../../lib/components/OrderCard.svelte';
-	import Modal from '../../lib/components/Modal.svelte';
+	import { selectedProducts, totalBalance, orderNumberStore, refundMethod  } from '../../stores/index';
+	import OrderCard from '$lib/components/OrderCard.svelte';
+	import Modal from '$lib/components/Modal.svelte';
 
 	let orderNumber = '';
 	let refundPreference = 'Original Payment';
@@ -193,7 +191,7 @@
 					>
 						Edit
 					</button>
-					<img src="/card-orange.svg" alt="icon-card" class="mr-3 ml-[17px]" />
+					<img src="/icons/card-orange.svg" alt="icon-card" class="mr-3 ml-[17px]" />
 					<h2 class="font-manrope font-semibold text-[12px]">AMEX -1001</h2>
 				</div>
 			{:else if refundPreference === 'Online Credit'}
@@ -219,7 +217,7 @@
 			</button>
 			<button
 				on:click={openModal}
-				class="w-[54px] h-[20px] font-manrope font-bold text-[#000101] border-b-[1px] border-[#000101]"
+				class="w-[54px] h-[20px] font-manrope font-bold text-[#6B7280] border-b-[1px] border-[#6B7280]"
 			>
 				Cancel
 			</button>

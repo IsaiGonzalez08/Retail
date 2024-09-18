@@ -2,7 +2,7 @@
 	import { onDestroy } from 'svelte';
 	import { selectedProducts, totalBalance } from '../../stores/selectedProducts';
 	import { refundMethod } from '../../stores/refundMethod';
-	import CardSuccess from '../../lib/components/CardSuccess.svelte';
+	import CardSuccess from '$lib/components/CardSuccess.svelte';
 
 	let products = [];
 	let balance = 0;
@@ -28,7 +28,7 @@
 </script>
 
 <div class="flex flex-col w-full h-full px-6">
-	<img src="/success.svg" alt="success-icon" class="w-20 h-16 my-5" />
+	<img src="/icons/success.svg" alt="success-icon" class="w-20 h-16 my-5" />
 	<h2 class="font-zodiakBold text-[#000101] text-[32px] leading-10">
 		Return<br />successfully initiated
 	</h2>
@@ -53,7 +53,7 @@
 
 	{#if refundPreference === 'Original Payment'}
 		<div class="flex justify-end mr-[5px]">
-			<img src="/card-orange.svg" alt="icon-card" class="mr-3 ml-[17px]" />
+			<img src="/icons/card-orange.svg" alt="icon-card" class="mr-3 ml-[17px]" />
 			<h2 class="font-manrope font-semibold text-[12px]">AMEX -1001</h2>
 		</div>
 	{:else if refundPreference === 'Online Credit'}
@@ -66,11 +66,11 @@
 
 	<div class="flex justify-center w-full h-full mt-11">
 		<div class="relative w-[341px] h-[388px]">
-			<img src="/card.svg" alt="card" class="w-full h-full object-cover" />
+			<img src="/icons/card.svg" alt="card" class="w-full h-full object-cover" />
 			<div
 				class="absolute inset-0 flex flex-col justify-around pt-[50px] pb-[49px] px-[40px] w-full h-full"
 			>
-				<img src="/logo.svg" alt="logo" class="w-full h-3" />
+				<img src="/icons/logo.svg" alt="logo" class="w-full h-3" />
 				<div>
 					<h2 class="px-2 text-[#FFFEFC] font-zodiakRegular text-[40px] leading-10">VIP</h2>
 					<h2 class="px-2 font-manrope text-[#FFFEFC] text-[18px] tracking-widest">

@@ -1,10 +1,8 @@
 <script>
-	import Header from '../../lib/components/Header.svelte';
 	import { goto } from '$app/navigation';
-	import { orderNumberStore } from '../../stores/orderStore';
-
-	import Popup from '../../lib/components/Popup.svelte';
-	import Modal from '../../lib/components/Modal.svelte';
+	import { orderNumberStore } from '../../stores/index';
+	import Popup from '$lib/components/Popup.svelte';
+	import Modal from '$lib/components/Modal.svelte';
 	let showPopup = false;
 
 	function openPopup() {
@@ -151,27 +149,27 @@
 			</div>
 			<div>
 				<div class="flex gap-2 items-center">
-					<img src="/email.svg" alt="logo-email" />
+					<img src="/icons/email.svg" alt="logo-email" />
 					<h4 class="font-normal text-sm">Email</h4>
 				</div>
 				<input
 					type="email"
 					bind:value={email}
-					class="border-b-[1px] border-[#000101] w-full h-[47px] pl-[12px] placeholder:text-[#000101] appearance-none outline-none"
-					placeholder="email@example.com"
+					class="border-b-[1px] border-[#000101] w-full h-[47px] pl-[12px] placeholder:text-[#6B7280] appearance-none outline-none"
+					placeholder="foo@example.com"
 				/>
 			</div>
 			<div>
 				<div class="flex gap-2 items-center">
-					<img src="/order-fill.svg" alt="logo-order" />
+					<img src="/icons/order-fill.svg" alt="logo-order" />
 					<h4 class="font-normal text-sm">Order confirmation</h4>
-					<button on:click={openPopup}><img src="/Info.svg" alt="info-icon" class="w-4" /></button>
+					<button on:click={openPopup}><img src="/icons/Info.svg" alt="info-icon" class="w-4" /></button>
 				</div>
 				<input
 					type="text"
 					bind:value={orderNumber}
 					on:input={handleOrderNumberInput}
-					class="border-b-[1px] border-[#000101] w-full h-[47px] pl-[12px] placeholder:text-[#000101] appearance-none outline-none"
+					class="border-b-[1px] border-[#000101] w-full h-[47px] pl-[12px] placeholder:text-[#6B7280] appearance-none outline-none"
 					placeholder="8-digit number"
 				/>
 			</div>
@@ -187,7 +185,7 @@
 			</button>
 			<button
 				on:click={openModal}
-				class="w-[54px] h-[20px] font-manrope font-bold text-[#000101] border-b-[1px] border-[#000101]"
+				class="w-[54px] h-[20px] font-manrope font-bold text-[#6B7280] border-b-[1px] border-[#6B7280]"
 				>Cancel
 			</button>
 		</div>
@@ -197,7 +195,7 @@
 <Popup visible={showPopup} {closePopup}>
 	<div class="flex justify-end">
 		<button on:click={closePopup}
-			><img class="flex justify-end cursor-pointer" src="/close.svg" alt="close-icon" /></button
+			><img class="flex justify-end cursor-pointer" src="/icons/close.svg" alt="close-icon" /></button
 		>
 	</div>
 	<h2 class="font-zodiak text-[#FFFEFC] text-[32px] font-zodiakBold">
@@ -207,7 +205,7 @@
 		Please enter the email confirmation you received and copy the 8-digit order number.
 	</p>
 	<div class="flex justify-center mt-5">
-		<img src="/Ticket.png" alt="ticket-img" />
+		<img src="/images/Ticket.png" alt="ticket-img" />
 	</div>
 </Popup>
 

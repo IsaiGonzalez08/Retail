@@ -1,8 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
-	import Modal from '../../lib/components/Modal.svelte';
-	import { refundMethod } from '../../stores/refundMethod';
+	import { refundMethod } from '../../stores/index';
 	import { onDestroy } from 'svelte';
+	import Modal from '$lib/components/Modal.svelte';
 
 	let showModal = false;
 	let selectedCard = null;
@@ -143,7 +143,7 @@
 					</h2>
 					<div class="flex gap-[12px] items-center">
 						<img
-							src={selectedCard === 'original' ? '/icon-card.svg' : '/card-orange.svg'}
+							src={selectedCard === 'original' ? '/icons/icon-card.svg' : '/icons/card-orange.svg'}
 							alt="card icon"
 						/>
 						<h2
@@ -186,11 +186,11 @@
 			on:click={navigateToReview}
 			class="w-full h-[49px] text-[#FFFEFC] rounded-[5px] font-manrope font-semibold text-lg bg-[#000101] disabled:bg-[#6B7280] mt-6"
 		>
-			Continue
+			Review returns
 		</button>
 		<button
 			on:click={openModal}
-			class="mb-[22px] mt-[20px] w-[54px] h-[20px] font-manrope font-bold text-[#000101] border-b-[1px] border-[#000101]"
+			class="mb-[22px] mt-[20px] w-[54px] h-[20px] font-manrope font-bold text-[#6B7280] border-b-[1px] border-[#6B7280]"
 		>
 			Cancel
 		</button>
