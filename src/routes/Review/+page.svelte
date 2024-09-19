@@ -1,13 +1,11 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { selectedProducts, totalBalance, orderNumberStore, refundMethod  } from '../../stores/index';
+	import { selectedProducts, totalBalance, orderNumberStore, refundMethod, showModal  } from '../../stores/index';
 	import OrderCard from '$lib/components/OrderCard.svelte';
-	import Modal from '$lib/components/Modal.svelte';
 
 	let orderNumber = '';
 	let refundPreference = 'Original Payment';
-	let showModal = false;
 	let products = [];
 	let currentTotalBalance = 0;
 
@@ -48,15 +46,7 @@
 	}
 
 	function openModal() {
-		showModal = true;
-	}
-
-	function closeModal() {
-		showModal = false;
-	}
-
-	function navigateToWelcome() {
-		goto('/');
+		showModal.set(true)
 	}
 
 	function navigateToUpdating() {
@@ -217,14 +207,10 @@
 			</button>
 			<button
 				on:click={openModal}
-				class="w-[54px] h-[20px] font-manrope font-bold text-[#6B7280] border-b-[1px] border-[#6B7280]"
+				class="w-[54px] h-[20px] font-manrope font-bold text-[#6B7280] border-b-[1px] border-[#6B7280] mb-8"
 			>
 				Cancel
 			</button>
 		</div>
 	</div>
 </div>
-
-{#if showModal}
-	<Modal {closeModal} {navigateToWelcome} />
-{/if}

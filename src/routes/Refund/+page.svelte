@@ -2,9 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { refundMethod } from '../../stores/index';
 	import { onDestroy } from 'svelte';
-	import Modal from '$lib/components/Modal.svelte';
+	import { showModal } from '../../stores/index';
 
-	let showModal = false;
 	let selectedCard = null;
 
 	const unsubscribe = refundMethod.subscribe(value => {
@@ -16,15 +15,7 @@
 	});
 
 	function openModal() {
-		showModal = true;
-	}
-
-	function closeModal() {
-		showModal = false;
-	}
-
-	function navigateToWelcome() {
-		goto('/');
+		showModal.set(true);
 	}
 
 	function navigateToReview() {
@@ -35,8 +26,17 @@
 		selectedCard = cardId;
 		refundMethod.set(cardId);
 	}
-</script>
 
+	function handleButtonClick(cardId) {
+		selectCard(cardId);
+	}
+
+	function handleKeyPress(event, cardId) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			selectCard(cardId);
+		}
+	}
+</script>
 
 <div class="flex flex-col galaxy-z:px-1 custom:px-5 custom2:px-6 w-full h-[90vh] justify-between">
 	<div class="flex flex-col w-full galaxy-z:px-2 custom:px-0">
@@ -121,11 +121,14 @@
 				Select your<br />refund method
 			</h2>
 			<h4 class="font-manrope text-[16px] font-normal">
-				You can choose between the original payment method or online credit, which includes a $5
-				bonus.
+				You can choose between the original payment method or online credit, which includes a $5 bonus.
 			</h4>
-			<div
+			<button
+				type="button"
 				class={`flex items-center gap-[24px] mt-[16px] pl-[24px] w-full h-[110px] rounded-[5px] border-[1.5px] ${selectedCard === 'original' ? 'bg-[#D46353] border-[#D46353]' : 'bg-[#FFF] border-[#D46353]'}`}
+				on:click={() => handleButtonClick('original')}
+				on:keypress={(event) => handleKeyPress(event, 'original')}
+				tabindex="0"
 			>
 				<input
 					class="customRadio"
@@ -133,29 +136,30 @@
 					name="refund"
 					id="original"
 					value="original"
+					checked={selectedCard === 'original'}
 					on:change={() => selectCard('original')}
 				/>
-				<div class="flex flex-col gap-[8px]">
-					<h2
-						class={`text-[16px] font-zodiakBold ${selectedCard === 'original' ? 'text-[#FFF]' : 'text-[#000101]'}`}
-					>
+				<div class="ml-[16px]">
+					<h2 class={`text-[16px] font-zodiakBold ${selectedCard === 'original' ? 'text-[#FFF]' : 'text-[#000101]'}`}>
 						Original Payment
 					</h2>
-					<div class="flex gap-[12px] items-center">
+					<div class="flex gap-[12px] items-center mt-2">
 						<img
 							src={selectedCard === 'original' ? '/icons/icon-card.svg' : '/icons/card-orange.svg'}
 							alt="card icon"
 						/>
-						<h2
-							class={`font-light text-[14px] ${selectedCard === 'original' ? 'text-[#FFF]' : 'text-[#000101]'}`}
-						>
+						<h2 class={`font-light text-[14px] ${selectedCard === 'original' ? 'text-[#FFF]' : 'text-[#000101]'}`}>
 							AMEX -1001
 						</h2>
 					</div>
 				</div>
-			</div>
-			<div
+			</button>
+			<button
+				type="button"
 				class={`flex items-center gap-[24px] mt-[16px] pl-[24px] w-full h-[110px] rounded-[5px] border-[1.5px] ${selectedCard === 'online' ? 'bg-[#D46353] border-[#D46353]' : 'bg-[#FFF] border-[#D46353]'}`}
+				on:click={() => handleButtonClick('online')}
+				on:keypress={(event) => handleKeyPress(event, 'online')}
+				tabindex="0"
 			>
 				<input
 					class="customRadio"
@@ -163,21 +167,18 @@
 					name="refund"
 					id="online"
 					value="online"
+					checked={selectedCard === 'online'}
 					on:change={() => selectCard('online')}
 				/>
-				<div class="flex flex-col gap-[8px]">
-					<h2
-						class={`text-[16px] font-zodiakBold ${selectedCard === 'online' ? 'text-[#FFF]' : 'text-[#000101]'}`}
-					>
+				<div class="ml-[16px] text-start">
+					<h2 class={`text-[16px] text-start font-zodiakBold ${selectedCard === 'online' ? 'text-[#FFF]' : 'text-[#000101]'}`}>
 						Online Credit
 					</h2>
-					<span
-						class={`text-[12px] ${selectedCard === 'online' ? 'text-[#FFF]' : 'text-[#000101]'}`}
-					>
+					<span class={`text-[12px] text-start ${selectedCard === 'online' ? 'text-[#FFF]' : 'text-[#000101]'}`}>
 						Enjoy a <span class="font-bold">$5 bonus credit</span> towards a future purchase with us
 					</span>
 				</div>
-			</div>
+			</button>
 		</div>
 	</div>
 	<div class="flex flex-col items-center mt-10">
@@ -197,10 +198,6 @@
 	</div>
 </div>
 
-{#if showModal}
-	<Modal {closeModal} {navigateToWelcome} />
-{/if}
-
 <style>
 	.customRadio {
 		appearance: none;
@@ -216,9 +213,7 @@
 		position: relative;
 		outline: none;
 		cursor: pointer;
-		transition:
-			background-color 0.01s,
-			border-color 0.01s;
+		transition: background-color 0.01s, border-color 0.01s;
 	}
 
 	.customRadio:checked {

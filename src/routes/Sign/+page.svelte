@@ -2,8 +2,10 @@
 	import { goto } from '$app/navigation';
 	import { orderNumberStore } from '../../stores/index';
 	import Popup from '$lib/components/Popup.svelte';
-	import Modal from '$lib/components/Modal.svelte';
+	import { showModal } from '../../stores/index';
+
 	let showPopup = false;
+
 
 	function openPopup() {
 		showPopup = true;
@@ -13,15 +15,9 @@
 		showPopup = false;
 	}
 
-	let showModal = false;
-
 	function openModal() {
-		showModal = true;
-	}
-
-	function closeModal() {
-		showModal = false;
-	}
+   	 showModal.set(true);
+  	}
 
 	let email = '';
 	let orderNumber = '';
@@ -54,10 +50,6 @@
 	function navigateToItems() {
 		orderNumberStore.set(orderNumber);
 		goto('../SelectItems');
-	}
-
-	function navigateToWelcome() {
-		goto('/');
 	}
 </script>
 
@@ -209,6 +201,3 @@
 	</div>
 </Popup>
 
-{#if showModal}
-	<Modal {closeModal} {navigateToWelcome} />
-{/if}

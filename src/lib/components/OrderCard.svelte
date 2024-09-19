@@ -11,15 +11,13 @@
   {#if showDeleteButton}
     <div class="flex items-start">
       <button on:click={deleteItem}>
-        <img src="/trash.svg" alt="trash-icon" class="w-[30px] h-[30px]">
+        <img src="/icons/trash.svg" alt="trash-icon" class="w-[30px] h-[30px]">
       </button>
     </div>
   {/if}
-  
   <div class="flex items-center min-w-[48px] min-h-[64px] mx-[20px]">
     <img src={image} alt="img-item" class="w-[73px] h-[75px]">
   </div>
-  
   <div class="flex flex-col w-full">
     <div class="flex items-center w-full justify-between">
       <h3 class="text-[#000101] text-[18px] font-zodiakBold">{name}</h3>

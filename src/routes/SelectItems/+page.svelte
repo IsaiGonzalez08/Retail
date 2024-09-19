@@ -2,28 +2,17 @@
 	import { onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { selectedProducts } from '../../stores/index';
+	import { showModal } from '../../stores/index';
 	import CardItem from '$lib/components/CardItem.svelte';
-	import Modal from '$lib/components/Modal.svelte';
 
-	let showModal = false;
 	let products = [];
 	let localBalance = 0;
 	let selectedItems = 0;
 	export let data;
 
-	console.log(data);
-
 	function openModal() {
-		showModal = true;
-	}
-
-	function closeModal() {
-		showModal = false;
-	}
-
-	function navigateToWelcome() {
-		goto('/');
-	}
+    	showModal.set(true);
+  	}
 
 	function navigateToReturn() {
 		goto('../ReturnReason');
@@ -196,10 +185,6 @@
 		</div>
 	</div>
 </div>
-
-{#if showModal}
-	<Modal {closeModal} {navigateToWelcome} />
-{/if}
 
 <style>
 	.no-scrollbar::-webkit-scrollbar {

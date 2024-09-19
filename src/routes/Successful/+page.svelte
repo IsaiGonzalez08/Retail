@@ -1,7 +1,6 @@
 <script>
 	import { onDestroy } from 'svelte';
-	import { selectedProducts, totalBalance } from '../../stores/selectedProducts';
-	import { refundMethod } from '../../stores/refundMethod';
+	import { selectedProducts, totalBalance, refundMethod } from '../../stores/index';
 	import CardSuccess from '$lib/components/CardSuccess.svelte';
 
 	let products = [];
@@ -27,7 +26,7 @@
 	});
 </script>
 
-<div class="flex flex-col w-full h-full px-6">
+<div class="flex flex-col w-full h-full px-6 pb-16">
 	<img src="/icons/success.svg" alt="success-icon" class="w-20 h-16 my-5" />
 	<h2 class="font-zodiakBold text-[#000101] text-[32px] leading-10">
 		Return<br />successfully initiated
@@ -63,28 +62,31 @@
 			</h2>
 		</div>
 	{/if}
-
-	<div class="flex justify-center w-full h-full mt-11">
-		<div class="relative w-[341px] h-[388px]">
-			<img src="/icons/card.svg" alt="card" class="w-full h-full object-cover" />
-			<div
-				class="absolute inset-0 flex flex-col justify-around pt-[50px] pb-[49px] px-[40px] w-full h-full"
-			>
-				<img src="/icons/logo.svg" alt="logo" class="w-full h-3" />
-				<div>
-					<h2 class="px-2 text-[#FFFEFC] font-zodiakRegular text-[40px] leading-10">VIP</h2>
-					<h2 class="px-2 font-manrope text-[#FFFEFC] text-[18px] tracking-widest">
+	
+	<div class="flex justify-center">
+		<div class="bg-vip-gradient flex flex-col mt-10 px-16 py-12  rounded-lg shadow-[6px 6px 10px 0px #000000] max-w-[410px]">
+			<div class="flex justify-center px-9">
+				<img src="/icons/logo.svg" alt="logo" />
+			</div>	
+			<div class="mt-14">
+					<h2 class="text-[#FFFEFC] font-zodiakLight text-5xl leading-[42px]">VIP</h2>
+					<h2 class="font-manrope font-extralight text-[#FFFEFC] text-xl tracking-widest">
 						SHOPPING EXPERIENCE
 					</h2>
 				</div>
-				<p class="px-2 text-[#FFFEFC] font-manrope text-[14px]">
+				<p class="text-[#FFFEFC] font-manrope font-extralight text-base mt-6">
 					You're invited to a VIP shopping spree with early access and special perks. Claim your
 					pass and step into luxury.
 				</p>
-				<button class="w-full bg-[#000101] text-[#FFF] h-[46px] rounded-[5px] font-manrope">
+				<button class="w-full bg-[#000101] text-[#FFF] h-[46px] rounded-[5px] font-manrope mt-12">
 					Claim VIP Pass
 				</button>
 			</div>
 		</div>
 	</div>
-</div>
+
+<style>
+	.bg-vip-gradient {
+    background-image: radial-gradient(circle, #bebebd, #545454);
+	}	
+</style>

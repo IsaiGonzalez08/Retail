@@ -10,15 +10,11 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@smui/radio": "^7.0.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-vercel": "^5.4.3",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"autoprefixer": "^10.4.20",
-		"flowbite": "^2.5.1",
-		"flowbite-svelte": "^0.46.16",
-		"flowbite-svelte-icons": "^1.6.1",
 		"postcss": "^8.4.45",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",

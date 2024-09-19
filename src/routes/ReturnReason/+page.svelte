@@ -1,17 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { productSelections, selectedProducts } from '../../stores/index';
-	import Modal from '$lib/components/Modal.svelte';
+	import { productSelections, selectedProducts, showModal } from '../../stores/index';
 
 	let products = [];
 	let currentIndex = 0;
-	let showModal = false;
 	let selections = {};
 	export let data;
 
-	let touchStartX = 0;
-	let touchEndX = 0;
 
 	onMount(() => {
 		selectedProducts.subscribe((value) => {
@@ -24,19 +20,6 @@
 		});
 	});
 
-	function handleTouchStart(event) {
-		touchStartX = event.changedTouches[0].clientX;
-	}
-
-	function handleTouchMove(event) {
-		touchEndX = event.changedTouches[0].clientX;
-		if (touchEndX < touchStartX) {
-			nextSlide();
-		} else if (touchEndX > touchStartX) {
-			prevSlide();
-		}
-	}
-
 	function nextSlide() {
 		if (currentIndex < products.length - 1) {
 			currentIndex += 1;
@@ -45,21 +28,8 @@
 		}
 	}
 
-	function prevSlide() {
-		currentIndex = (currentIndex - 1 + products.length) % products.length;
-	}
-
 	function openModal() {
-		showModal = true;
-	}
-
-	function closeModal() {
-		showModal = false;
-	}
-
-	function navigateToWelcome() {
-		productSelections.set({});
-		goto('/');
+		showModal.set(true)
 	}
 
 	function navigateToRefund() {
@@ -120,8 +90,6 @@
 
 <div
 	class="flex flex-col w-full h-[92vh] galaxy-z:overflow-y-hidden galaxy-z:px-1 custom:px-5 custom2:px-6 custom2:block"
-	on:touchstart={handleTouchStart}
-	on:touchend={handleTouchMove}
 >
 	<div class="flex justify-center items-center h-[36px] w-full gap-[6px] mt-8 mb-6 galaxy-z:px-2 custom:px-0">
 		<div class="flex flex-col">
@@ -225,10 +193,9 @@
 	</div>
 	<div class="flex justify-center mt-6">
 		{#each products as _, i}
-			<button
+			<div
 				class={`w-2 h-2 rounded-full mx-1 ${currentIndex === i ? 'bg-[#D46353]' : 'bg-[#ECB1A8]'} transition-colors duration-300`}
-				on:click={() => (currentIndex = i)}
-			></button>
+			></div>
 		{/each}
 	</div>
 	<div class="flex flex-col items-center">
@@ -247,7 +214,3 @@
 		</button>
 	</div>
 </div>
-
-{#if showModal}
-	<Modal {closeModal} {navigateToWelcome} />
-{/if}
